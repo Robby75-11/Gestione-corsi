@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Card, Button, Row, Col, Spinner } from "react-bootstrap";
-import { getCorsi, iscriviStudente } from "../services/corsiService";
+import { getAllCorsi, iscriviStudente } from "../services/corsiService";
 import { useLocation } from "react-router-dom";
 
 export default function CorsiList() {
@@ -15,7 +15,7 @@ export default function CorsiList() {
   useEffect(() => {
     const fetchCorsi = async () => {
       try {
-        const dati = await getCorsi();
+        const dati = await getAllCorsi();
         setCorsi(dati);
       } catch (err) {
         console.error("Errore nel recupero corsi:", err);
@@ -27,8 +27,13 @@ export default function CorsiList() {
   }, []);
 
   const handleIscrizione = async (corsoId) => {
-    if (!studente) return alert("Studente non trovato!");
+    if (!studente) {
+      alert("Studente non trovato!");
+      return;
+    }
+
     setIscrivendo(corsoId);
+
     try {
       await iscriviStudente(studente.id, corsoId);
       alert("Iscrizione avvenuta!");
