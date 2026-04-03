@@ -1,32 +1,43 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8080/api/studenti"; // Cambia con il tuo URL backend
+// URL base del backend
+const API_URL = "http://localhost:8080/api/studenti";
 
-// Recupera tutti gli studenti (opzionale)
-export const getStudenti = async () => {
-  try {
-    const response = await axios.get(BASE_URL);
-    return response.data;
-  } catch (err) {
-    console.error("Errore getStudenti:", err);
-    throw err;
-  }
-};
-// REGISTRA UN NUOVO STUDENTE
+// Config Axios per includere credenziali se necessario
+const axiosInstance = axios.create({
+  baseURL: API_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+  withCredentials: true, // utile se vuoi cookie/sessioni
+});
+
+// Funzione per registrare uno studente
 export const registraStudente = async (studente) => {
   try {
-    const response = await axios.post(BASE_URL, studente);
-    return response.data; // ritorna lo studente appena creato
+    const response = await axiosInstance.post("/", studente);
+    return response.data;
   } catch (err) {
     console.error("Errore registraStudente:", err);
     throw err;
   }
 };
 
-// Recupera i corsi a cui uno studente è iscritto
+// Funzione per ottenere tutti gli studenti
+export const getAllStudenti = async () => {
+  try {
+    const response = await axiosInstance.get("/");
+    return response.data;
+  } catch (err) {
+    console.error("Errore getAllStudenti:", err);
+    throw err;
+  }
+};
+
+// Funzione per ottenere i corsi di uno studente
 export const getCorsiStudente = async (studenteId) => {
   try {
-    const response = await axios.get(`${BASE_URL}/${studenteId}/corsi`);
+    const response = await axiosInstance.get(`/${studenteId}/corsi`);
     return response.data;
   } catch (err) {
     console.error("Errore getCorsiStudente:", err);
