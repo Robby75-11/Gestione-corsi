@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Card, Row, Col, Spinner } from "react-bootstrap";
-import { getCorsiStudente } from "../services/studentiService";
+
 import { useLocation } from "react-router-dom";
 
 export default function IscrizioniCorsi() {
