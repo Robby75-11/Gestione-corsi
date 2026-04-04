@@ -3,7 +3,7 @@ import { Navbar as NavB, Nav, Container } from "react-bootstrap";
 
 export default function NavbarComponent() {
   return (
-    <NavB bg="dark" variant="dark" expand="lg">
+    <NavB bg="primary" variant="dark" expand="lg">
       <Container>
         <NavB.Brand href="/">Gestione Corsi</NavB.Brand>
         <Nav className="me-auto">
