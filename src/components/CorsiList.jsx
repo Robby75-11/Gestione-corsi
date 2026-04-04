@@ -35,7 +35,7 @@ export default function CorsiList() {
     setIscrivendo(corsoId);
 
     try {
-      await iscriviStudente(studente.id, corsoId);
+      await iscriviStudente(corsoId, studente.id);
       alert("Iscrizione avvenuta!");
     } catch (err) {
       console.error(err);

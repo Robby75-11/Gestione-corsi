@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import StudentiForm from "./components/StudentiForm";
 import CorsiList from "./components/CorsiList";
 import IscrizioniCorsi from "./components/IscrizioniCorsi";
+import CorsiForm from "./components/CorsiForm";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<StudentiForm />} />
           <Route path="/corsi" element={<CorsiList />} />
           <Route path="/iscritti" element={<IscrizioniCorsi />} />
+          <Route path="/crea-corsi" element={<CorsiForm />} />
         </Routes>
       </div>
     </div>

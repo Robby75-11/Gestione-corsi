@@ -44,7 +44,7 @@ export const creaCorso = async (corso) => {
   }
 };
 // Iscrivi uno studente a un corso
-export const iscriviStudente = async (studenteId, corsoId) => {
+export const iscriviStudente = async (corsoId, studenteId) => {
   try {
     const response = await axiosInstance.post(
       `/${corsoId}/iscrivi/${studenteId}`,

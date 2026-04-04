@@ -13,6 +13,9 @@ export default function NavbarComponent() {
           <Link className="nav-link" to="/corsi">
             Corsi
           </Link>
+          <Link className="nav-link" to="/crea-corsi">
+            Crea Corso
+          </Link>
           <Link className="nav-link" to="/iscritti">
             I miei corsi
           </Link>
